@@ -1,0 +1,28 @@
+<style>
+
+#pic 
+{
+    position: fixed;
+    bottom:40px;
+    right: 1px;
+    
+}
+</style>
+
+{{extend 'layout.html'}}
+<h1>Delete Course</h1>
+
+<h4>
+    Select Course to be Deleted
+</h4>
+<form action="{{=URL('Delete_Process')}}" method="post">
+    <select name="jet">
+        {{for r in Courses_Details:}}
+        <option>{{=r.Course_Name}}({{=r.Course_id}}) Taken By {{=r.First_name}} {{=r.Last_name}}({{=r.Assigned_Professor}})</option>
+        {{pass}}
+    </select>
+    <input type='submit'>
+</form>
+<div id="pic">
+         <img src="https://jajooyash.pythonanywhere.com/Course_Registeration/static/_2.12.3/delete.jpg" alt="" height="350" width="350" />
+</div>

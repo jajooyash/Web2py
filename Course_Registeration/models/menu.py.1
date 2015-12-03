@@ -1,0 +1,46 @@
+# -*- coding: utf-8 -*-
+# this file is released under public domain and you can use without limitations
+
+#########################################################################
+## Customize your APP title, subtitle and menus here
+#########################################################################
+response.logo = A(B('Course Registration'),XML('&nbsp;'),
+                  _class="brand",_href=URL('default', 'index'))
+response.title = request.application.replace('_',' ').title()
+response.subtitle = ''
+
+## read more at http://dev.w3.org/html5/markup/meta.name.html
+response.meta.author = 'Your Name <you@example.com>'
+response.meta.description = 'a cool new app'
+response.meta.keywords = 'web2py, python, framework'
+response.meta.generator = 'Web2py Web Framework'
+
+## your http://google.com/analytics id
+response.google_analytics_id = None
+
+#########################################################################
+## this is the main application menu add/remove items as required
+#########################################################################
+
+response.menu = [(T('Home'), False, URL('default', 'index')),
+   (T('Courses'), False, '#', [(T('Monsoon'), False, URL('default', 'index')),(T('Spring'), False, URL('default', 'index')),]),
+   (T('Faculty'), False, URL('default', 'index')),
+   (T('Contact Us'), False, URL('default', 'contact')),
+   (T('About Institute'), False, URL('default', 'institute'))
+]
+
+if auth.has_membership('Academic'):
+    response.menu.append(T('Home'), False, URL('default', 'index'))
+    response.menu.append(T('Courses'), False, '#', [(T('Monsoon'), False, URL('default', 'index')),(T('Spring'), False, URL('default', 'index')),])
+    response.menu.append(T('Faculty'), False, URL('default', 'index'))
+    response.menu.append(T('Contact Us'), False, URL('default', 'contact'))
+    response.menu.append(T('About Institute'), False, URL('default', 'institute'))
+    response.menu.append(T('Courses Edit/Delete'), False, '#', [(T('Add Course'), False, URL('Course_management', 'Addc')),(T('Delete Course'), False, URL('Course_management', 'Delc')),(T('View Course'), False, URL('Course_management', 'Viewc')),])
+    response.menu.append(T('Students'), False, URL('Course_management', 'index'))
+elif auth.user_id is not None:
+   
+
+DEVELOPMENT_MENU = True
+
+
+if "auth" in locals(): auth.wikimenu()

@@ -1,0 +1,98 @@
+{{extend 'layout.html'}}
+<style>
+body
+    {
+       background-image: url("https://jajooyash.pythonanywhere.com/Course_Registeration/static/_2.12.3/front.png");
+        background-size: 1370px 590px;
+        background-repeat: no-repeat;
+    }
+    #mens1
+    {
+        margin-left:130px;
+        position:relative;
+        
+    }
+#men
+{
+    width:200px;
+    padding:10px;
+}
+#fours
+    {
+        width:70%;
+        margin:auto;
+    }
+#one {
+    color:black!important;
+    font-size:45px;
+    text-shadow: 0 0 7px #000;
+    margin-bottom:20px;
+   
+}
+    
+.Course_main 
+{
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom:20px;
+    background-image: URL("https://jajooyash.pythonanywhere.com/Course_Registeration/static/_2.12.3/bg.jpg");
+}
+.four 
+{
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+#two
+{
+  display:inline-block;
+  position:left;
+  margin-bottom:10px;  
+    
+}
+ #three
+{
+  background-color: transparent;
+  width:80%;
+  display:inline-block;
+  position:left;
+  text-align:center;  
+    
+}
+a:visited
+{
+    text-decoration:none;
+    
+}
+a:hover {
+    background-color: lightgreen;
+    text-decoration:none;
+}
+</style>
+<header class="Course_main">
+       <div id="two">
+         <img src="https://jajooyash.pythonanywhere.com/Course_Registeration/static/_2.12.3/IIIT_logo.png" alt="IIIT-H Portal" style="width:200px;height160px"/>  
+    </div>
+      <div id="three">
+          <h2><span id="one">COURSE REGISTRATION PORTAL</span><br/>International Institute of Information Technology, Hyderabad</h2>
+       </div>
+</header>
+    <div class="four">
+        <div id="fours">
+            <h1 align="center">
+            Welcome {{=message}}
+            </h1>
+    <p> 
+    <ul>
+        <li><a href='/Course_Regesitration/static/_2.12.3/UG-4yr-Academic_regulations.pdf' target="_blank">UG Academic Regulations (For 4 year B.Tech)</a></li>
+        <li><a href='/Course_Regesitration/static/_2.12.3/UG-5yr-Academic_regulations.pdf' target="_blank">Dual Degree Academic Regulations (For 5 year B.Tech and MS by Research)</a></li>
+</ul>
+</p>
+                
+         </div>
+     </div>    
+</body>

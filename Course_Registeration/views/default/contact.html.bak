@@ -1,0 +1,59 @@
+{{extend 'layout.html'}}
+<style>
+    body
+    {
+       background-image: url("http://127.0.0.1:8000/Course_Registration/static/_2.12.3/Image7.jpg");
+        background-size: 2000px 600px;
+        background-repeat: no-repeat;
+       
+    }
+    h1
+    {
+        color:#80007f;
+    }
+#one
+    {
+        width:80%;
+        margin:auto;
+        font-size:20px;
+        color:darkred;
+    }
+#two
+    {
+        width:60%;
+        text-align:center;
+        display:inline-block;
+        position:left;
+    }
+#three
+    {
+        text-align:center;
+        display:inline-block;
+        position:left;
+    }
+
+
+</style>
+<h1 align="center">
+    CONTACT US<br/>
+    <br/>
+    
+</h1>
+<div id="one">
+    <div id="two">
+        YASH JAJOO<br/>
+        M.Tech VLSI & CE <br/>
+        IIIT-Hyderabad<br/>
+        yash.jajoo@students.iiit.ac.in<br/>
+        +919680454586<br/>
+        
+    </div>
+     <div id="three">
+        UTKARSH GARG</br>
+        M.Tech VLSI & CE <br/>
+        IIIT-Hyderabad<br/>
+        utkarsh.garg@students.iiit.ac.in<br/>
+        +917661063602<br/>
+        
+    </div>
+</div>

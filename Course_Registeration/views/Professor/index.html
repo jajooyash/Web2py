@@ -1,0 +1,136 @@
+{{extend 'layout.html'}}
+<style>
+body
+    {
+       background-image: url("https://jajooyash.pythonanywhere.com/Course_Registeration/static/_2.12.3/Light-Texture-Blue-Background-HD-Wallpaper.jpg");
+    }
+#mens1
+    {
+        margin-left:130px;
+        position:relative;
+        
+    }
+#men
+{
+    width:200px;
+    padding:10px;
+}
+#fours
+    {
+        width:70%;
+        margin:auto;
+    }
+#one {
+    color:black!important;
+    font-size:45px;
+    text-shadow: 0 0 7px #000;
+    margin-bottom:20px;
+   
+}
+    
+.Course_main 
+{
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom:20px;
+    background-image: url("https://jajooyash.pythonanywhere.com/Course_Registeration/static/_2.12.3/bg.jpg");
+}
+.four 
+{
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+ 
+}
+#two
+{
+  display:inline-block;
+  position:left;
+  margin-bottom:10px;  
+    
+}
+ #three
+{
+  background-color: transparent;
+  width:80%;
+  display:inline-block;
+  position:left;
+  text-align:center;  
+    
+}
+a:visited
+{
+    text-decoration:none;
+    
+}
+a:hover {
+    background-color: lightgreen;
+    text-decoration:none;
+}
+
+#five
+    {
+        margin-top:30px;
+        text-align:center;
+        float:left;
+        display:inline-block;
+        width=50%;
+        padding: 10px;
+        border-image: url(https://jajooyash.pythonanywhere.com/Course_Registeration/static/_2.12.3/border.jpg) 100 round;
+        border-image-width: 25px;
+        
+    }
+#six
+    {
+        width:40%;
+        margin-top:30px;
+        display:inline-block;
+        float:right;
+        text-align:center;
+        font-size:25px;
+        color:darkred;
+       
+    }
+#combine
+{
+    width:80%;
+    min-height:400px;
+    
+}
+</style>
+<header class="Course_main">
+       <div id="two">
+         <img src="https://jajooyash.pythonanywhere.com/Course_Registeration/static/_2.12.3/IIIT_logo.png" alt="IIIT-H Portal" style="width:200px;height160px"/>  
+    </div>
+      <div id="three">
+          <h2><span id="one">COURSE REGISTRATION PORTAL</span><br/>International Institute of Information Technology, Hyderabad</h2>
+       </div>
+</header>
+<body>
+    <div class="four">
+        <div id="fours">
+            
+            <div id="combine"> 
+                <div id="five">
+                  
+                 {{for rows in form :}}
+                   <img src="{{=URL( 'default','download', args=rows.Image_Upload)}}" height="250" width="200"></img>
+                <!--{{=rows.Image_Upload}}-->
+                {{pass}}
+                </div>
+                <div id="six">
+                    <p>
+                        <h1 align="center" style="color:black;">
+                            Welcome<br/>
+                        </h1>  
+                        Prof {{=message}}
+                    </p>
+                </div>
+            </div>
+         </div>
+     </div>    
+</body>

@@ -1,0 +1,118 @@
+{{extend 'layout.html'}}
+<style>
+    
+    body
+    {
+        background-image: url("https://jajooyash.pythonanywhere.com/Course_Registeration/static/_2.12.3/bsstu.jpg");
+    
+    }
+    table
+    {
+        padding:20px;
+        
+        
+    }
+     tr,td
+    {
+        padding:0px;
+        font-size:20px;
+    }
+    #big
+    {
+        border:2px solid  black; 
+        min-height:600px;
+        width:70%;
+        margin:auto;
+    }
+    #tab
+    {
+        float:left;
+        width:65%;
+        padding:20px;
+    }
+    
+    #img
+    {
+        padding:20px;
+        float:left;
+        width:5%;
+    }
+</style>
+<body>
+   
+  <div class="container">
+  <h2 align="center">My Profile</h2>
+    <br/>
+  <div class="xyz">
+      {{for r in form:}}
+    <div id="big">
+        <div id="tab">
+            <table>
+            <tr>
+                <td>First Name : </td>
+                <td>{{=r.First_name}}</td>
+            </tr>
+             <tr>
+                <td>Last Name : </td>
+                <td>{{=r.Last_name}}</td>
+            </tr>
+            <tr>
+                <td>Roll No. : </td>
+                <td>{{=r.Rollno}}</td>
+            </tr>
+            <tr>
+                <td>Date of Birth :</td>
+                <td>{{=r.Dob}}</td>
+            </tr>
+            <tr>
+                <td>Stream : </td>
+                <td>{{=r.Stream}}</td>
+            </tr>
+            <tr>
+                <td>Program : </td>
+                <td>{{=r.Program}}</td>
+            </tr>
+            <tr>
+                <td>Year : </td>
+                <td>{{=r.Years}}</td>
+            </tr>
+            <tr>
+                <td>CGPA : </td>
+                <td>{{=r.CGPA}}</td>
+            </tr>
+            <tr>
+                <td>Place : </td>
+                <td>{{=r.Place}}</td>
+            </tr>
+            <tr>
+                <td>Previous Courses Taken : </td>
+                <td>{{=r.Courses_Taken}}</td>
+            </tr>
+            <tr>
+                <td>Previous Project Done : </td>
+                <td>{{=r.Project_Done}}</td>
+            </tr>
+            <tr>
+                <td>Place : </td>
+                <td>{{=r.Place}}</td>
+            </tr>
+            <tr>
+                <td>No of Courses Taken : </td>
+                <td>{{=r.No_Of_Courses}}</td>
+            </tr>
+            <tr>
+                <td>No of Project Taken : </td>
+                <td>{{=r.No_Of_Project}}</td>
+            </tr>
+       </table>
+      </div>
+      <div id="img">
+             <img src="{{=URL( 'default','download', args=r.Image_Upload)}}" height="200" width="160"></img>
+      </div>
+    </div>
+      {{pass}}
+  </div>
+    <br/>
+    <br/>
+</div>
+</body>

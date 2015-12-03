@@ -1,0 +1,5 @@
+# -*- coding: utf-8 -*-
+# try something like
+def course_edit():
+         grid=SQLFORM.grid(db.Academic_Office)
+        return locals()

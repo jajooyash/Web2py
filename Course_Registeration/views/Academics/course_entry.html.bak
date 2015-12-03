@@ -1,0 +1,26 @@
+{{extend 'layout.html'}}
+<style>
+#one
+    {
+    width:50%;
+    font-size:15px;
+    padding:20px;
+    min-height:650px;
+    position:left;
+    float:left;
+    }
+
+   #pic {
+    position: fixed;
+    bottom:40px;
+    right: 1px;
+    
+}
+</style>
+<h1>Add Course</h1>
+<div id="one">
+{{=form}}    
+</div>
+<div id="pic">
+         <img src="http://127.0.0.1:8000/Course_Registration/static/_2.12.3/plus.png" alt="" height="250" width="250" />
+</div>

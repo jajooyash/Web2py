@@ -1,0 +1,15 @@
+# -*- coding: utf-8 -*-
+# try something like
+
+def index():
+    return dict(message="hello from Student_management.py")
+
+def course_taken():
+    forms=db(db.auth_user.email).select()
+    return locals()
+
+def course_new():
+    return locals()
+
+def course_edit():
+    return locals()

@@ -1,0 +1,118 @@
+{{extend 'layout.html'}}
+<style>
+   h1
+    {
+        text-align:center;
+        
+    }
+th
+{
+    background-color:green;
+    color: white;
+}
+#one
+{
+    width:80%;
+    margin:auto;
+    padding:20px;
+    font-size:15px;
+}
+th,td
+{
+    text-align:center;
+    border: 1px black;
+    border-style:solid;
+    border-collapse: collapse;
+      padding: 15px;
+}
+    
+table
+    {
+        width:100%;
+        text-align:center;
+    border: 3px black;
+    border-style:solid;
+    border-collapse: collapse;
+        
+    }
+th
+{
+   text-align:center;
+    border: 3px black;
+    border-style:solid;
+    border-collapse: collapse;
+    
+}
+}
+</style>
+    <h1>Students Registered for {{=a3}} Course </h1>
+<div id="one">
+    
+<table>
+    <tr>
+    <th>S.NO</th>
+    <th>Name</th>
+    <th>Stream</th>
+    <th>Program</th>
+    <th>Year</th>
+    <th>Email Id</th>
+    <th>CGPA</th>
+    </tr>    
+     {{for i in range(0,len(SearchRecord1)):}}
+     <tr>
+         <td>{{=i+1}}.</td>
+         <td>{{=SearchRecord1[i].First_name}} {{=SearchRecord1[i].Last_name}}</td>
+         <td>{{=SearchRecord1[i].Stream}}</td>
+         <td>{{=SearchRecord1[i].Program}}</td>
+         <td>{{=SearchRecord1[i].Years}}</td>
+         <td>{{=SearchRecord1[i].Email_id}}</td>
+         <td>{{=SearchRecord1[i].CGPA}}</td>
+     </tr>
+    {{pass}}
+        {{for i in range(0,len(SearchRecord2)):}}
+     <tr>
+         <td>{{=i+1+len(SearchRecord1)}}.</td>
+         <td>{{=SearchRecord2[i].First_name}} {{=SearchRecord2[i].Last_name}}</td>
+         <td>{{=SearchRecord2[i].Stream}}</td>
+         <td>{{=SearchRecord2[i].Program}}</td>
+         <td>{{=SearchRecord2[i].Years}}</td>
+         <td>{{=SearchRecord2[i].Email_id}}</td>
+         <td>{{=SearchRecord2[i].CGPA}}</td>
+     </tr>
+    {{pass}}
+    {{for i in range(0,len(SearchRecord3)):}}
+     <tr>
+         <td>{{=i+1+len(SearchRecord1)+len(SearchRecord2)}}.</td>
+         <td>{{=SearchRecord3[i].First_name}} {{=SearchRecord3[i].Last_name}}</td>
+         <td>{{=SearchRecord3[i].Stream}}</td>
+         <td>{{=SearchRecord3[i].Program}}</td>
+         <td>{{=SearchRecord3[i].Years}}</td>
+         <td>{{=SearchRecord3[i].Email_id}}</td>
+         <td>{{=SearchRecord3[i].CGPA}}</td>
+     </tr>
+    {{pass}}
+    {{for i in range(0,len(SearchRecord4)):}}
+     <tr>
+         <td>{{=i+1+len(SearchRecord1)+len(SearchRecord2)+len(SearchRecord3)}}.</td>
+         <td>{{=SearchRecord4[i].First_name}} {{=SearchRecord4[i].Last_name}}</td>
+         <td>{{=SearchRecord4[i].Stream}}</td>
+         <td>{{=SearchRecord4[i].Program}}</td>
+         <td>{{=SearchRecord4[i].Years}}</td>
+         <td>{{=SearchRecord4[i].Email_id}}</td>
+         <td>{{=SearchRecord4[i].CGPA}}</td>
+     </tr>
+    {{pass}}
+    {{for i in range(0,len(SearchRecord5)):}}
+     <tr>
+         <td>{{=i+1+en(SearchRecord1)+len(SearchRecord2)+len(SearchRecord3)+len(SearchRecord4)}}.</td>
+         <td>{{=SearchRecord5[i].First_name}} {{=SearchRecord5[i].Last_name}}</td>
+         <td>{{=SearchRecord5[i].Stream}}</td>
+         <td>{{=SearchRecord5[i].Program}}</td>
+         <td>{{=SearchRecord5[i].Years}}</td>
+         <td>{{=SearchRecord5[i].Email_id}}</td>
+         <td>{{=SearchRecord5[i].CGPA}}</td>
+     </tr>
+    {{pass}}
+</table>
+
+</div>

@@ -1,0 +1,54 @@
+# -*- coding: utf-8 -*-
+db = DAL('sqlite://storage.sqlite',pool_size=1,check_reserved=['all'],lazy_tables=True)
+
+db.define_table('User_Profile',Field('SID', 'reference auth_user', requires=[IS_NOT_EMPTY() ], unique=True ),
+                Field('First_name',requires=IS_NOT_EMPTY()),
+                Field('Last_name',requires=IS_NOT_EMPTY()),
+                Field('Rollno','integer',requires=(IS_SLUG(),IS_NOT_IN_DB(db,'User_Profile.Rollno'))),
+                Field('Dob','date'),
+                Field('Gender'),
+                Field('Email_id'),
+                Field('Stream'),
+                Field('Program'),
+                Field('Years','integer'),
+                Field('CGPA','float'),
+                Field('Mobileno','integer'),
+                Field('Place'),
+                Field('Courses_Taken','text'),
+                Field('Project_Done','text'),
+                Field('Image_Upload', 'upload'),
+                Field('Course1', 'text'),
+                Field('Course2', 'text'),
+                Field('Course3', 'text'),
+                Field('Course4', 'text'),
+                Field('Course5', 'text'),
+                Field('Project1', 'text'),
+                Field('Project2', 'text'),
+                Field('Project3', 'text'),
+                auth.signature)
+
+db.Candidate.SID.requires = IS_IN_DB(db,db.auth_user.id)
+
+db.define_table('Professor_Profile', Field('PID', 'integer', 'reference auth_user', requires=[IS_NOT_EMPTY()], unique=True),
+                Field('First_name',requires=IS_NOT_EMPTY()),
+                Field('Last_name',requires=IS_NOT_EMPTY()),
+                Field('Employee_Id','integer',requires=(IS_SLUG(),IS_NOT_IN_DB(db,'User_Profile.Rollno'))),
+                Field('Department',requires=IS_NOT_EMPTY()),
+                Field('Email_id'),
+                Field('Mobileno','integer'),
+                Field('Courses_Allocated','text'),
+                Field('Courses_Previously_Taken','text'),
+                Field('Image_Upload', 'upload'),
+                auth.signature)
+db.Examiner.PID.requires = IS_IN_DB(db,db.auth_user.id)
+
+db.define_table('Academic_Office',Field('AID', 'integer', 'reference auth_user', requires=[IS_NOT_EMPTY()], unique=True),
+               Field('Course_Name',requires=IS_NOT_EMPTY()),
+               Field('Course_id',requires=(IS_SLUG(),IS_NOT_IN_DB(db,'Academic_Office.Course_id'))),
+               Field('Credits',requires=IS_NOT_EMPTY()),
+               Field('Assigned_Professor',requires=IS_NOT_EMPTY()),
+               Field('Employee_Id','integer',requires=IS_NOT_EMPTY()),
+               Field('Course_Description','text',requires=IS_NOT_EMPTY()),
+               Field('Min_Students','integer',requires=IS_NOT_EMPTY()),
+               auth.signature)
+db.Examiner.AID.requires = IS_IN_DB(db,db.auth_user.id)

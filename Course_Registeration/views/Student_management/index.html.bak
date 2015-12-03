@@ -1,0 +1,47 @@
+{{extend 'layout_students.html'}}
+<style>
+#tabs
+{
+    width:30%;
+    margin-left:80px;
+    text-align:center;
+    
+}
+#tab
+{
+    padding: 15px;
+}
+a:visited
+{
+    color:black;
+    text-decoration:none;
+}
+a:hover
+{
+    color:red;
+    text-decoration:none;
+}
+</style>
+
+<h1 align="center">
+    COURSE REGISTRATION PORTAL
+</h1>
+<br/>
+<div>
+    <p> 
+       <ul>
+            <li><a href='/Course_Regesitration/static/_2.12.3/UG-4yr-Academic_regulations.pdf' target="_blank">UG Academic Regulations (For 4 year B.Tech)                 </a>
+           </li>
+            <li><a href='/Course_Regesitration/static/_2.12.3/UG-4yr-Academic_regulations.pdf' target="_blank">Dual Degree Academic Regulations (For 5 year                    B.Tech and MS by Research)</a>
+           </li>
+       </ul>
+    </p>
+
+    <table id="tabs">
+        <tr>
+            <td id="tab"><a href="URL('course_taken')">Courses Taken</a></td>
+            <td id="tab"><a href="URL('course_new')">Take New Courses</a></td>
+            <td id="tab"><a href="URL('course_edit')">Edit Courses</a></td>
+       </tr>
+    </table>
+</div>

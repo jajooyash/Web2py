@@ -1,0 +1,66 @@
+{{extend 'layout.html'}}
+<style>
+#one
+{
+    width:500px;
+}
+#two
+{
+    margin-left:50px;
+    margin-top:0px;
+    padding:10px;
+}
+#three
+{
+    margin-left:50px;
+    margin-top:0px;
+    padding:10px;
+}
+#four
+{
+    border-bottom:2px solid black;
+}
+</style>
+<h1 align="center">Course Registration</h1>
+<form action="{{=URL('Check')}}" method="post">
+<div id="four">
+<h2>Courses :</h2>
+<div id="two">
+{{for i in range(0,Cos):}}
+   <h3>
+     Course{{=i+1}}
+   </h3>
+    <select id="one" name="courses">
+            <option>None</option>
+            {{for j in Academic:}}
+                <option>{{=j.Course_Name}}({{=j.Course_id}}) By {{=j.First_name}} {{=j.Last_name}}</option>
+            {{pass}}
+    </select>   
+    <br/>
+{{pass}}
+    <br/>
+</div>
+</div>    
+<h2>Projects :</h2>
+<div id="three">
+{{for i in range(0,Pro):}}
+   <h3>
+     Project{{=i+1}} Under
+   </h3>
+      <select id="one" name="project">
+            <option>None</option>
+            {{for j in Professor:}}
+                <option>{{=j.First_name}} {{=j.Last_name}}</option>
+            {{pass}}
+    </select> 
+          <input type="text" placeholder="Title" name="title"/>
+    <br/>
+{{pass}}
+</div>
+<hr/>
+ <p align="center">
+     <input type="submit">
+    </p>
+</form>
+<br/>
+<br/>

@@ -1,0 +1,33 @@
+# -*- coding: utf-8 -*-
+# try something like
+def my_form_processing(form,foundRecord):
+        s=form.vars.No_Of_Courses
+        #foundRecord[0].No_Of_Courses=
+
+def take_course():
+        response.menu +=studentmenu
+        q1 = db.User_Profile.SID == auth.user.id
+        foundRecord = db(q1).select()
+        form = SQLFORM.factory(Field('No_Of_Courses'),Field('No_Of_Project'))
+        if form.process(onvalidation=my_form_processing).accepted:
+                response.flash = 'form accepted'
+                redirect(URL('Students','index'))
+        elif form.errors:
+                response.flash = 'form has errors'
+        else:
+                response.flash = 'please fill out the form'
+        
+        return locals()
+
+def course_taken():
+    response.menu +=studentmenu
+    return locals()
+
+def edit_course():
+    response.menu +=studentmenu
+    return locals()
+
+def list_course():
+         response.menu +=studentmenu
+        
+         return locals()

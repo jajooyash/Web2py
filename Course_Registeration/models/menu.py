@@ -1,0 +1,38 @@
+# -*- coding: utf-8 -*-
+# this file is released under public domain and you can use without limitations
+
+#########################################################################
+## Customize your APP title, subtitle and menus here
+#########################################################################
+response.logo = A(B('Course Registration'),XML('&nbsp;'),
+                  _class="navbar-brand",_href=URL('default', 'index'))
+response.title = request.application.replace('_',' ').title()
+response.subtitle = ''
+
+## read more at http://dev.w3.org/html5/markup/meta.name.html
+response.meta.author = 'Your Name <you@example.com>'
+response.meta.description = 'a cool new app'
+response.meta.keywords = 'web2py, python, framework'
+response.meta.generator = 'Web2py Web Framework'
+
+## your http://google.com/analytics id
+response.google_analytics_id = None
+
+#########################################################################
+## this is the main application menu add/remove items as required
+#########################################################################
+response.menu = [
+    ((T('Home'), False, URL('default', 'index'), [])),
+    ((T('Contact Us'),False,URL('default','contact'))),
+    ((T('About Institute'),False,URL('default','institute')))
+]
+
+studentmenu=[((T('My Profile'), False, URL('',''), [ ((T('View'),False,URL('Students','profile'))),((T('Edit'),False,URL('Students','profile_view')))])),((T('Courses'), False, URL('',''), [ ((T('Take Courses'),False,URL('Students','take_course'))),((T('My Courses'),False,URL('Students','course_taken')))])),  ((T('Courses Offer'), False, URL('Students','course_Des')))] 
+
+professormenu=[((T('My Profile'), False, URL('',''), [ ((T('View'),False,URL('Professor','profile'))),((T('Edit'),False,URL('Professor','profile_view')))])),((T('Course Assigned'), False, URL('Professor', 'Courses_Assigned'), [])),((T('Course Description Edit'), False, URL('Professor', 'Courses_Description_edit')))]
+
+Adminmenu=[((T('Faculty Registered'), False, URL('Academics', 'faculty_registered'), [])),((T('Students Registered'), False, URL('', ''), [((T('Sorted By CGPA'), False, URL('Academics', 'Sort'), [])),((T('Sorted By Roll No'), False, URL('Academics', 'student_registered')))])),((T('Course Entry'), False, URL('Academics','course_entry'), [(T('Add'), False, URL('Academics','course_entry')),(T('Delete'), False, URL('Academics', 'Delete')),(T('Edit'), False, URL('Academics', 'Edit'))],)),((T('Course Allocation'), False, URL('', ''), [((T('Sort By CGPA'), False, URL('Academics', 'Check'))),((T('Sort By Branch'), False, URL('Academics', 'Sortbybranch'))),((T('Sort By Program'), False, URL('Academics', 'Sortbyprogram')))])),((T('Course Details'), False, URL('Academics', 'View'), []))             ]
+
+DEVELOPMENT_MENU = True
+
+if "auth" in locals(): auth.wikimenu()

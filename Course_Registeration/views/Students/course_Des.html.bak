@@ -1,0 +1,3 @@
+{{extend 'layout.html'}}
+<h1>This is the Students/course_Des.html template</h1>
+{{=BEAUTIFY(response._vars)}}

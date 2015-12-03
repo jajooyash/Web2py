@@ -1,0 +1,132 @@
+# -*- coding: utf-8 -*-
+# this file is released under public domain and you can use without limitations
+
+#########################################################################
+## This is a sample controller
+## - index is the default action of any application
+## - user is required for authentication and authorization
+## - download is for downloading files uploaded in the db (does streaming)
+#########################################################################
+@auth.requires_login()
+def index():
+    type=auth.user.UserType
+    if type=='Student':
+        response.menu +=studentmenu
+        q1 = db.User_Profile.SID == auth.user.id
+        StudentRecord = db(q1).select()
+        if not StudentRecord:
+            redirect(URL('profile'))
+    elif type=='Professor':
+        response.menu +=professormenu
+        q1 = db.Professor_Profile.PID == auth.user.id
+        ProfessorRecord = db(q1).select()
+        if not ProfessorRecord:
+            redirect(URL('profile'))
+    else:
+        response.menu +=Adminmenu
+        
+    return dict(message=auth.user.first_name+auth.user.last_name)
+
+def institute():
+            response.flash = T("Hello World")
+            return dict(message=T('Welcome to web2py!'))
+def contact():
+            response.flash = T("Hello World")
+            return dict(message=T('Welcome to web2py!'))
+
+@auth.requires_login()
+def profile():
+    type=auth.user.UserType
+    if type=='Student':
+        response.menu +=studentmenu
+    else:
+        response.menu +=professormenu
+        
+    if auth.user.UserType == 'Professor':
+        q1 = db.Professor_Profile.PID == auth.user.id
+        foundRecord = db(q1).select()
+
+        if not foundRecord:
+            form = SQLFORM(db.Professor_Profile,fields=['First_name', 'Last_name', 'Employee_Id', 'Department', 'Email_id', 'Mobileno','Image_Upload'])
+            form.vars['PID'] = auth.user.id
+            if form.process().accepted:
+                response.flash = 'form accepted'
+                redirect(URL('index'))
+            elif form.errors:
+                response.flash = 'form has errors'
+            else:
+               response.flash = 'please fill out the form'
+        
+            return dict(form=form)
+        else:
+            ProfessorId = foundRecord[0].id
+            q1 = db.Professor_Profile.id == ProfessorId
+            db.Professor_Profile.PID.writable = False
+            db.Professor_Profile.PID.readable = False
+            db.Professor_Profile.id.readable = False
+            form=SQLFORM.grid(q1, fields=[db.Professor_Profile.First_name, db.Professor_Profile.Last_name, db.Professor_Profile.Employee_Id, db.Professor_Profile.Department, db.Professor_Profile.Email_id, db.Professor_Profiler.Mobileno,db.Professor_Profiler.Image_Upload ], deletable=False, csv=False, create=False, searchable=False)
+            return dict(form=form)
+    else:
+        q1 = db.User_Profile.SID == auth.user.id
+        foundRecord = db(q1).select()
+        if not foundRecord:
+            form = SQLFORM(db.User_Profile, fields=['First_name', 'Last_name', 'Rollno', 'Dob','Gender','Email_id','Stream','Program','Years','CGPA','Mobileno','Place','Image_Upload'])
+            form.vars['SID'] = auth.user.id
+            if form.process().accepted:
+               response.flash = 'form accepted'
+               redirect(URL('index'))
+            elif form.errors:
+               response.flash = 'form has errors'
+            else:
+               response.flash = 'please fill out the form'
+    
+            return dict(form=form)               
+
+        else:
+            StudentId = foundRecord[0].id
+            q1 = db.Candidate.id == StudentId
+            db.User_Profile.SID.writable = False
+            db.User_Profile.SID.readable = False
+            db.User_Profile.id.readable = False
+            form=SQLFORM.grid(q1, fields=[ db.User_Profile.First_name,  db.User_Profile.Last_name,  db.User_Profile.Rollno,db.User_Profile.Dob,db.User_Profile.Gender,db.User_Profile.Email_id,db.User_Profile.Stream,db.User_Profile.Program,db.User_Profile.Years,db.User_Profile.CGPA,db.User_Profile.Mobileno,db.User_Profile.Place,db.User_Profile.Image_Upload], deletable=False, csv=False, create=False, searchable=False)
+            return dict(form=form)
+
+        
+        
+        
+def user():
+    """
+    exposes:
+    http://..../[app]/default/user/login
+    http://..../[app]/default/user/logout
+    http://..../[app]/default/user/register
+    http://..../[app]/default/user/profile
+    http://..../[app]/default/user/retrieve_password
+    http://..../[app]/default/user/change_password
+    http://..../[app]/default/user/manage_users (requires membership in
+    http://..../[app]/default/user/bulk_register
+    use @auth.requires_login()
+        @auth.requires_membership('group name')
+        @auth.requires_permission('read','table name',record_id)
+    to decorate functions that need access control
+    """
+    return dict(form=auth())
+
+
+@cache.action()
+def download():
+    """
+    allows downloading of uploaded files
+    http://..../[app]/default/download/[filename]
+    """
+    return response.download(request, db)
+
+
+def call():
+    """
+    exposes services. for example:
+    http://..../[app]/default/call/jsonrpc
+    decorate with @services.jsonrpc the functions to expose
+    supports xml, json, xmlrpc, jsonrpc, amfrpc, rss, csv
+    """
+    return service()

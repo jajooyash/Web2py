@@ -1,0 +1,19 @@
+<style>
+    #pic {
+    position: fixed;
+    bottom: 80px;
+    right: 50px;
+    
+}
+</style>
+
+{{extend 'layout.html'}}
+<body>
+ <h1>
+    Take Course
+</h1>
+{{=form}}
+</body>
+<div id="pic">
+         <img src="http://127.0.0.1:8000/Course_Registration/static/_2.12.3/take.png" alt="" width=200px/>
+</div>

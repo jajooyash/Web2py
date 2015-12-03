@@ -1,0 +1,94 @@
+{{extend 'layout.html'}}
+<style>
+    
+    body
+    {
+       background-image: url("http://127.0.0.1:8000/Course_Registration/static/_2.12.3/Light-Texture-Blue-Background-HD-Wallpaper.jpg");
+    
+    }
+    table
+    {
+        padding:20px;
+        
+        
+    }
+     tr,td
+    {
+        padding:0px;
+        font-size:20px;
+    }
+    #big
+    {
+        border:2px solid  black; 
+        min-height:400px;
+        width:70%;
+        margin:auto;
+    }
+    #tab
+    {
+        float:left;
+        width:65%;
+        padding:20px;
+    }
+    
+    #img
+    {
+        padding:20px;
+        float:left;
+        width:5%;
+    }
+</style>
+<body>
+
+<div class="container">
+  <h2 align="center">My Profile</h2>
+    <br/>
+  <div class="xyz">
+      {{for r in form:}}
+    <div id="big">
+        <div id="tab">
+        <table>
+            <tr>
+                <td>First Name</td>
+                <td>{{=r.First_name}}</td>
+            </tr>
+             <tr>
+                <td>Last Name</td>
+                <td>{{=r.Last_name}}</td>
+            </tr>
+            <tr>
+                <td>Employee Id</td>
+                <td>{{=r.Employee_Id}}</td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>{{=r.Gender}}</td>
+            </tr>
+            <tr>
+                <td>Department</td>
+                <td>{{=r.Department}}</td>
+            </tr>
+            <tr>
+                <td>Email Id</td>
+                <td>{{=r.Email_id}}</td>
+            </tr>
+            <tr>
+                <td>Mobile No</td>
+                <td>{{=r.Mobileno}}</td>
+            </tr>           
+            <tr>
+                <td>Previous Courses Taken</td>
+                <td>{{=r.Courses_Previously_Taken}}</td>
+            </tr>
+       </table>
+     </div>
+      <div id="img">
+             <img src="{{=URL( 'default','download', args=r.Image_Upload)}}" height="200" width="160"></img>
+      </div>
+    </div>
+      {{pass}}
+  </div>
+    <br/>
+    <br/>
+</div>
+</body>

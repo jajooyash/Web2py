@@ -1,0 +1,76 @@
+{{extend 'layout.html'}}
+<style>
+#pic {
+    position: fixed;
+    bottom: 70px;
+    right: 1px;
+    
+    
+}
+ 
+table
+{
+    width:70%;
+    
+}
+th
+{
+    padding:5px;
+        font-size:15px;
+    background-color: green;
+    color: white;
+    text-align:center;
+    border:2px solid black;
+    border-collapse:collapse
+    
+    
+}
+td,tr
+    {
+        text-align:center;
+        border:2px solid black;
+        border-collapse:collapse;
+        padding:5px;
+        font-size:15px;
+    }
+    
+    
+    table
+    {
+        text-align:center;
+        border:3px solid black;
+    border-collapse:collapse;
+    }
+</style>
+
+<h1>List of Faculty</h1>
+<br/>
+<table>
+    <tr>
+        <th>Employee Id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Gender</th>
+        <th>Deparement</th>
+        <th>Email-id</th>
+        <th>Contact No</th>
+        <th>Courses Allocated</th>
+        <th>Total Courses</th>
+    </tr>
+    {{ for r in form: }}
+    <tr>
+        <td>{{=r.Employee_Id}}</td>
+        <td>{{=r.First_name}}</td>
+        <td>{{=r.Last_name}}</td>
+        <td>{{=r.Gender}}</td>
+        <td>{{=r.Department}}</td>
+        <td>{{=r.Email_id}}</td>
+        <td>{{=r.Mobileno}}</td>
+        <td>{{=r.Courses_Allocated}}</td>
+        <td>{{=r.No_Of_Courses_Assigned}}</td>
+    </tr>
+    {{pass}}
+</table>
+<div id="pic">
+         <img src="http://127.0.0.1:8000/Course_Registration/static/_2.12.3/professorart.png" alt="" />
+</div>

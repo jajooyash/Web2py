@@ -1,0 +1,74 @@
+{{extend 'layout.html'}}
+<style>
+   h1
+    {
+        text-align:center;
+        
+    }
+th
+{
+    background-color:green;
+    color: white;
+}
+#one
+{
+    width:80%;
+    margin:auto;
+    padding:20px;
+    font-size:15px;
+}
+th,td
+{
+    text-align:center;
+    border: 1px black;
+    border-style:solid;
+    border-collapse: collapse;
+      padding: 15px;
+}
+    
+table
+    {
+        width:100%;
+        text-align:center;
+    border: 3px black;
+    border-style:solid;
+    border-collapse: collapse;
+        
+    }
+th
+{
+   text-align:center;
+    border: 3px black;
+    border-style:solid;
+    border-collapse: collapse;
+    
+}
+}
+</style>
+    <h1>Students Registered for {{=a3}} Course </h1>
+<div id="one">
+    
+<table>
+    <tr>
+    <th>S.NO</th>
+    <th>Name</th>
+    <th>Stream</th>
+    <th>Program</th>
+    <th>Year</th>
+    <th>Email Id</th>
+    <th>CGPA</th>
+    </tr>    
+     {{for i in range(0,len(SearchRecord)):}}
+     <tr>
+         <td>{{=i+1}}.</td>
+         <td>{{=SearchRecord[i].First_name}} {{=SearchRecord[i].Last_name}}</td>
+         <td>{{=SearchRecord[i].Stream}}</td>
+         <td>{{=SearchRecord[i].Program}}</td>
+         <td>{{=SearchRecord[i].Years}}</td>
+         <td>{{=SearchRecord[i].Email_id}}</td>
+         <td>{{=SearchRecord[i].CGPA}}</td>
+     </tr>
+    {{pass}}
+</table>
+
+</div>

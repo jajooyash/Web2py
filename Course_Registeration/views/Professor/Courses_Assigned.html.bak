@@ -1,0 +1,31 @@
+{{extend 'layout.html'}}
+<style>
+    #good
+    {
+     position:right;
+     float:right;
+     
+    }
+   #yet
+    {
+        width:65%;
+    }
+</style>
+<h1>
+    Prof {{=message}} 
+</h1>
+<p>
+    You have been Assigned with the following Courses
+</p>
+<div id="yet">
+   <ul>
+    {{for i in range(0,len(t)):}}
+            <li><a href="{{=URL('Enrolled',args=t[i])}}">{{=t[i]}}</a><br/>{{=aer[i]}}</li>
+    {{pass}}    
+</ul> 
+</div>
+
+<div id="good">
+    
+   <img src="http://127.0.0.1:8000/Course_Registration/static/_2.12.3/Picture1.jpg" alt="" style="width:420px; height:450px"/>
+</div>
